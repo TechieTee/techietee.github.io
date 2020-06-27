@@ -1,112 +1,491 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> PORTFOLIO</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?fbclid=IwAR3q5Ox9h4WbjofgTVWEeo41uLMBFEfAnZ6aJ52cCwYhfzlByGj07LEtj5U" />
+  <title>Document</title>
 </head>
+<style>
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+    background-color: #111;
+  }
+
+  /* The side navigation menu */
+  .sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+  }
+
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+  }
+
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+
+  .bgimg-1,
+  .bgimg-2,
+  .bgimg-3 {
+    background-color: rgba(29, 28, 29, 0.986);
+    background-blend-mode: overlay;
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bgimg-1 {
+    background-image: url("images/img.jpg");
+    background-size: cover;
+    background-position: bottom 0px;
+    min-height: 100%;
+  }
+
+  .bgimg-2 {
+    background-image: url("images/s.png");
+    min-height: 400px;
+  }
+
+  .bgimg-3 {
+    background-image: url("images/9.svg");
+    min-height: 400px;
+  }
+
+  .caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+  }
+
+  .caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+  }
+
+  h3 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #111;
+  }
+
+  .contact-modal {
+  height: 90vh;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: rgb(80, 94, 97);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+  position: fixed;
+  top: 0;
+}
+.hide-modal {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  cursor: none;
+  transition: opacity 0.3s linear;
+}
+.contact-modal-open-btn {
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: rgb(109, 2, 2);
+  font-size: 12px;
+  cursor: pointer;
+  color: #fffffffb;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24), -1px -1px 5px rgba(0, 0, 0, 0.24);
+}
+.contact-modal-open-btn:hover {
+  background: rgb(68, 20, 20);
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form textarea,
+#contact-submit {
+  font: 400 12px/16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#contact-form {
+  background: #f9f9f9;
+  padding: 25px;
+  margin: 50px 0;
+  position: relative;
+}
+
+#contact-form h3{
+  color: #f96;
+  /* color: rgb(109, 2, 2); */
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+#contact-form h4 {
+  /* color: rgba(124, 2, 2, 0.89);  */
+  /* color: #f96; */
+  color: rgb(10, 10, 10); 
+  display: block;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact-form textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact-submit {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #0cf;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#contact-submit:hover {
+  background: #09c;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact-submit:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: 0;
+  border: 1px solid #999;
+}
+::-webkit-input-placeholder {
+  color: #888;
+}
+:-moz-placeholder {
+  color: #888;
+}
+::-moz-placeholder {
+  color: #888;
+}
+:-ms-input-placeholder {
+  color: #888;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"] {
+  padding-top: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: none;
+}
+
+#close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 26px;
+  color: rgb(175, 9, 9);
+  padding: 5px;
+  font-weight: 600;
+  transition: font-size 0.2s linear;
+  cursor: pointer;
+  user-select: none;
+}
+#close-btn:hover {
+  transition: font-size 0.2s linear;
+  font-size: 29px;
+}
+#close-btn:active {
+  color: green;
+}
+
+
+  /* Turn off parallax scrolling for tablets and phones */
+  @media only screen and (max-device-width: 1024px) {
+
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3 {
+      background-attachment: scroll;
+     
+    }
+  }
+</style>
 
 <body>
-    <section id="welcome animate">
-            
-        <div class="name-plate animate">
-            <h1>Hello,</h1>
-            <h1>I'm MODUPE!</h1>
-            
-        </div>
-    </section>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html"> <i class="fa fa-home"></i>&nbsp;&nbsp;HTML5</a>
+    <a href="library.html"> <i class="fa fa-book"></i>&nbsp;&nbsp;CSS3</a>
+    <a href="testimonies.html"><i class="fa fa-comments-o">&nbsp;&nbsp;BOOTSTRAP4</i>
+    <a href="testimonies.html"><i class="fa fa-comments-o">&nbsp;&nbsp;WORDPRESS</i>
+    <a href="testimonies.html"><i class="fa fa-comments-o">&nbsp;&nbsp;JAVASCRIPT</i>
+    <a href="login.html"><i class="fa fa-pencil"></i>&nbsp;&nbsp;GIT</a>
+    <a href="login.html"><i class="fa fa-pencil"></i>&nbsp;&nbsp;REACT(inview)</a>
+    <a href="BELLO FATIMA MODUPE RESUME.doc" download="BELLO FATIMA MODUPE RESUME.doc"
+     style="color: #0359f7; font-size: 16px; text-align: center; text-decoration: none;"><i class="fa fa-download"></i>&nbsp;
+     Download my CV</a>
+  </div>
 
-    <section id="sections" class="animate">
-        <section id="skills">
-            <h1>SKILLS</h1>
-            <ul>
-                <li>Frontend Developer(HTML,CSS,JS).</li>
-                <li> Good Team Player.</li>
-                <li>Good Analytical Skills.</li>
-                <li>Fast and Positive Thinker.</li>
-                <a href="BELLO FATIMA MODUPE RESUME.doc" download="BELLO FATIMA MODUPE RESUME.doc" style="color: #ffffff; text-decoration: none;">Download my CV</a>
-            </ul>
-             
+  <!-- Use any element to open the sidenav -->
+  <div style="background: rgb(109, 2, 2);color: #fffffffb; font-weight: 700px;font-size: 24px;"><span onclick="openNav()" > &nbsp; &nbsp; ☰ Skill Stack</span></div>
+
+  <!-- <button class="openbtn" onclick="openNav()">☰ Menu</button> -->
+
+  <div class="bgimg-1">
+    <div class="caption">
+      <span class="border" style="text-align: center;">I'M MODUPE</span> <br><br>
+      <span class="border">A FRONT-END DEVELOPER</span>
+    </div>
+  </div>
+  <br>
+  
+
+  <div style="color: #777;background-color:white;text-align:center;padding:10px 80px;text-align: justify;">
+    <h3 style="text-align:center;">About Me</h3>
+    <p>
+      I'm tech facinated, i love to write codes, expecially doing these things
+      on a team, i love to see problems solved, im alive when goals and target
+      are met, in the hitch of finding solution, ive got lots of tenancity, im 
+      likely to be the motivation on a team im always on the go, ready to learn
+      new things, im smart a fast and positive thinker, and a good team player
+      
+      magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur
+      aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque
+      non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt
+      mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan
+      fringilla vulputate at quibusdam sociis eleifend, aenean maecenas
+      vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare.
+      Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue
+      etiam maecenas, porta porttitor placerat leo.
+    </p>
+  </div>
+
+  <div class="bgimg-2">
+    <div class="caption">
+      <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #ffffff;">
+        You Can Find Me Here</span> <br><br>
+        <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+          <img width="40" src="./iconfinder_social_media_logo_github_1221585.svg" alt="github link"></span>
+
+          <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+            <img width="30" src="./twitter.svg" alt="twitter link"></span>
+
+            <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+              <img width="30" src="./gmail.svg" alt="email address"></span>
+
+              <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+                <img width="30" src="./whatsapp.svg" alt="whatsapp image"></span>
+
+                <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+                  <img width="40" src="iconfinder_LinkedIn_571110.svg" alt="linkedin image"></span>
+
+                  <span class="border" style="background-color:transparent;font-weight: bold; font-size:25px;color: #000000;">
+                    <img width="40" src="medium.png" alt="mediumimage"></span>
+    </div>
+  </div>
+
+  <div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+      <p><center><h2> <u>My Career Objectives</u> </h2></center>
+      <marquee behavior="" direction="left" style="font-size: 22px;">To partake in bringing innovative ideas in problem solving through technological solutions, also to contribute my
+         knowledge to the tech ecosystem hence propagating technological advancement.</marquee>
+      </p>
+    </div>
+  </div>
+
+  <div class="bgimg-3">
+    <div class="caption">
+      <span class="border" style="background-color:transparent;font-size:30px;color: #f7f7f7;">
+        <a href="#" style="color: #f7f7f7; text-decoration: none;">Explore my Gallery!</a></span>
+    </div>
+  </div>
+
+<!-- modal form  -->
+<div id="modal-with-form" class="contact-modal hide-modal">
+  <div class="container">  
+          <form id="contact-form">
+            <h3>Easily reach me by</h3>
+            <h4>filling this form and get a reply within 24 hours</h4>
+            <span id="close-btn">&times;</span>
+
+            <fieldset>
+              <input type="text" id="title" required autofocus placeholder="Message Title">
               
-        </section>
+            </fieldset>
 
-
-        <section id="contact" class="animate">
-
-            <h1>CONTACT</h1>
-            <ul>
-                <div>
-                    <img width="40" src="./iconfinder_social_media_logo_github_1221585.svg" alt="github link">
-                    <a href="https://github.com/TechieTee" target="blank">Github</a></div>
-
-                <div>
-                    <img width="30" src="./twitter.svg" alt="twitter link">
-                    <a href="https://twitter.com/TechieTee" target="blank">Twitter</a></div>
-
-                <div>
-                    <img width="30" src="./gmail.svg" alt="email address">
-                    <a href="#contact" target="blank">mailtomodupe@gmail.com</a>
-                </div>
-
-                <div>
-                    <img width="30" src="./whatsapp.svg" alt="whatsapp image">
-                    <a href="https://api.whatsapp.com/send?phone=2349031703106" target="blank">Whatsapp</a></div>
-
-                    <div>
-                        <img width="40" src="iconfinder_LinkedIn_571110.svg" alt="linkedin image">
-                        <a href="https://www.linkedin.com/in/bello-fatima-modupe-15a35b147/" target="blank">linkedin</a></div>
-
-                <div>
-                    <img width="30" src="./dial-pad.svg" alt="phone image">
-                    <a href="#contact" target="blank">+23409031703106</a></div>
-                    <div>
-                            <img width="30" src="iconfinder_ic_explore_48px_352332.svg" alt="whatsapp image">
-                            <a href="https://unessfabrics.com/" target="blank">EXPLORE!(an example of my wordpress site)</a></div>
-            </ul>
             
-        </section>
-    </section>
-    
-    <div id="modal-with-form" class="contact-modal hide-modal">
-        <div class="container">  
-                <form id="contact-form">
-                  <h3>Easily reach me by</h3>
-                  <h4>filling this form and get a reply within 24 hours</h4>
-                  <span id="close-btn">&times;</span>
-
-                  <fieldset>
-                    <input type="text" id="title" required autofocus placeholder="Message Title">
-                    
-                  </fieldset>
-
-                  
-                  <fieldset>
-                    <input type="text" id="name" required minlength="4" placeholder="Your Name">
-                    
-                  </fieldset>
-                  <fieldset>
-                    <input type="email" id="email" required placeholder="Your Email Here...">
-                    
-                  </fieldset>
-                  
-                 
-                  <fieldset>
-                    <textarea id="message" minlength="20" required placeholder="Type your message here..."></textarea>
-                  </fieldset>
-                  <fieldset>
-                    <button name="submit" id="contact-submit">Submit</button>
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-        <div class="contact-modal-open-btn animate">
+            <fieldset>
+              <input type="text" id="name" required minlength="4" placeholder="Your Name">
+              
+            </fieldset>
+            <fieldset>
+              <input type="email" id="email" required placeholder="Your Email Here...">
+              
+            </fieldset>
             
-            <h2>Contact me.</h2>
+           
+            <fieldset>
+              <textarea id="message" minlength="20" required placeholder="Type your message here..."></textarea>
+            </fieldset>
+            <fieldset>
+              <button name="submit" id="contact-submit">Submit</button>
+            </fieldset>
+          </form>
         </div>
-    <footer>Made By TechieTee &copy; 2019</footer>
-    <script src="test.js"></script>
+      </div>
+<!-- close modal form -->
+
+  <div style="position:relative;">
+    <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+      <p>
+      <span style="font-size: 18px;">hiring for a frontend developer role?</span> 
+       <span class="contact-modal-open-btn" style="float: right;font-size: 18px; margin-right: 8%;">
+            
+        Contact me.
+    </span> 
+      </p>
+     
+    </div>
+  </div>
+
+  <!-- <div class="bgimg-1">
+    <div class="caption">
+      <span class="border">COOL!</span>
+    </div>
+  </div> 
+  <div class="contact-modal-open-btn animate">
+    <h2>Contact me.</h2>
+  </div> -->
+  <footer>
+    <p style="text-align:center; font-weight:bold;">
+      &COPY;TechieTee 2020 
+    </p>
+  </footer>
+  <script src="test.js"></script>
 </body>
+<script>
+  /* Set the width of the side navigation to 250px */
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
 
 </html>
